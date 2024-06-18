@@ -10,3 +10,4 @@ vector<int> all_divisors_of_number(int n){
     }
     return ans;
 }
+//TC-O(sqrt(n))
