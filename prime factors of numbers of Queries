@@ -1,0 +1,29 @@
+//get all prime factors of each of q numbers in sorted order
+vector<vector<int>> smallest_prime_factor(int n,vector<int>queries){
+    vector<int>spj(n+1);
+    for(int i=1;i<=n;i++){
+        spj[i]=i;
+    }
+    for(int i=2;i*i<=n;i++){
+        if(spj[i]==i){
+            for(int j=i*i;j<=n;j+=i){
+                if(spj[j]==j){
+                    spj[j]=i;
+                }
+            }
+        }
+    }
+    vector<vector<int>>ans;
+    for(int i=0;i<queries.size();i++){
+        vector<int>temp;
+        int var=queries[i];
+        while(var!=1){
+            temp.push_back(spj[var]);
+            var/=spj[var];
+        }
+        ans.push_back(temp);
+    }
+    return ans;
+}
+//TC-O(nloglogn)+O(q*logn)
+//SC-O(n)
