@@ -1,0 +1,20 @@
+//Sieve of Eratosthenes
+//it is used for finding the prime numbers upto number n
+vector<int> get_all_prime_number(int n){
+    vector<int>ans;
+    vector<int>prime(n+1,1);
+    for(int i=2;i*i<=n;i++){
+        if(prime[i]==1){
+            for(int j=i*i;j<=n;j+=i){
+                prime[j]=0;
+            }
+        }
+    }
+    for(int i=2;i<=n;i++){
+        if(prime[i]==1){
+            ans.push_back(i);
+        }
+    }
+    return ans;
+}
+//TC-O(n)+O(nloglogn)+O(n)-O(nloglogn)
