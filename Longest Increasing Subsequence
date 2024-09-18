@@ -12,7 +12,7 @@ int bs(vector<int>&v,int target){
         }
         return ans;
     }
-    int lengthOfLIS(vector<int> nums) {
+    int LIS(vector<int> nums) {
         vector<int>arr;
         for(int i=0;i<nums.size();i++){
             if(arr.size()==0){
@@ -30,3 +30,5 @@ int bs(vector<int>&v,int target){
         }
         return arr.size();
     }
+//T.C-O(nlogn)
+//S.C-O(n)
