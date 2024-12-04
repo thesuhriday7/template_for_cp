@@ -14,7 +14,7 @@ long long int powm(long long int x, long long int n)
     else
         return p;
 }
-long long int reversemodolue(long long int n)
+long long int reversemodule(long long int n)
 {
     return powm(n, 1000000005);
 }
@@ -25,7 +25,7 @@ long long int ncr(long long int n, long long int r)
     {
         fact[i] = (fact[i - 1] * i) % 1000000007;
     }
-    return (fact[n] * reversemodolue(fact[n-r]) % 1000000007) * reversemodolue(fact[r]) % 1000000007;
+    return (fact[n] * reversemodule(fact[n-r]) % 1000000007) * reversemodule(fact[r]) % 1000000007;
 }
 //T.C-O(N+LOG(N)+LOG(N))->O(N)
 //S.C-O(N)
