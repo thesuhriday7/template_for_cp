@@ -18,7 +18,7 @@ long long int reversemodule(long long int n)
 {
     return powm(n, 1000000005);
 }
-long long int ncr(long long int n, long long int r)
+long long int nPr(long long int n, long long int r)
 {
     vector<long long int> fact(n + 1, 1);
     for (long long int i = 1; i <= n; i++)
