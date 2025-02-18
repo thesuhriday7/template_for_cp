@@ -1,0 +1,39 @@
+//xor_num^Numbers>=limit_num ,where Finding the Range Of Numbers
+vector<pair<long long int, long long int>> functionForRangesOf(long long int xor_num, long long int limit_num)
+{
+    // prev ^ x >= curr
+    vector<pair<long long int, long long int>> result;
+    ll value = 0;
+    for (int i = 31; i >= 0; i--)
+    {
+        ll currb = 0;
+        ll prevb = 0;
+        if (limit_num & (1ll << i))
+        {
+            currb = 1;
+        }
+        if (xor_num & (1ll << i))
+        {
+            prevb = 1;
+        }
+        if (currb)
+        {
+            value = value | ((1 - prevb) * (1ll << i));
+        }
+        else
+        {
+            ll lb = value | ((1 - prevb) * (1ll << i));
+            ll rb = lb;
+            for (int j = i - 1; j >= 0; j--)
+            {
+                rb |= (1ll << j);
+            }
+            result.push_back({lb, rb});
+            value = value | ((prevb) * (1ll << i));
+        }
+    }
+    result.push_back({value, value});
+    return result;
+}
+//T.C-O(31*31)-O(961)
+//S.C-O(30)
